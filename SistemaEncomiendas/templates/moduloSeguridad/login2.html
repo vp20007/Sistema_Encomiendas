@@ -1,0 +1,17 @@
+{% extends "base3.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block body %}
+
+
+    <form method="post" id="loginForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- Botón de enviar -->
+        <button type="submit">Iniciar sesión</button>
+    </form>
+    
+
+
+{% endblock body %}

@@ -1,0 +1,14 @@
+/* Importar la fuente Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+/* Aplicar la fuente y el tamaño del texto a los párrafos */
+.card-body p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem; /* Ajusta el tamaño de la fuente según tus necesidades */
+    text-align: justify;
+}
+
+/* Aplicar margen izquierdo a los span */
+.card-footer span {
+    margin-left: 10px;
+}

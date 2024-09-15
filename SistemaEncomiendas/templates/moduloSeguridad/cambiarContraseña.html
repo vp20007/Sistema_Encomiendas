@@ -1,0 +1,93 @@
+{% extends "base4.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block body %}
+<div class="container mt-3">
+    <div class=" row bg-secondary py-1" >
+        <h3 class="mb-1 text-white">Seguridad</h3>
+    </div >
+    <div class=" row align-items-center border mt-1 " style="background-color: #F5F0EF;">
+        <div class="col-md-6 align-items-end ">
+            <div class="d-flex align-items-end ">
+                <p class="mb-1 font-weight-bold">
+                    <b>
+                        <i class="fas fa-check-circle"></i>  Cambio</b>
+                </p> 
+            </div>
+        </div>
+        
+    </div >
+</div >
+<section class="vh-100" >
+    <div class="container py-3 " >
+        <div class="row d-flex justify-content-center  h-100"  >
+            <div class="col col-12" >
+                
+                <div class="card" style="border-radius: 1rem;"  >
+                    <div class="row g-0" >
+                        <div class="col d-flex align-items-center " style="background-color: #F5F0EF;border-radius: 1rem 1rem 1rem 1rem; "><!--form-->
+                            <div class="card-body p-4 p-lg-5 text-black d-flex justify-content-center align-items-center" >
+                                
+                                <form method="post" class="w-75 needs-validation" novalidate>
+                                    {% csrf_token %}
+                                    <h5 class="fw-normal  mb-3 pb-3 " style="letter-spacing: 1px; ;"><b>Formulario de cambio de contraseña</b> </h5>
+                                    <hr>
+                                    <div>
+                                        {% if form.errors %}
+                                        {% for field in form  %}
+                                            {% if field.errors %}
+                                                {% for error in field.errors  %}
+                                                <li class="text-danger "><b>{{error|escape}}</b></li>
+                                                {% endfor %}
+                                            
+                                            {% endif %}
+                                        {% endfor %} 
+                                    {% endif %}
+                                    
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Contraseña antigua</b></span>
+                                        {% render_field form.old_password class+="form-control form-control-lg" placeholder="Contraseña actual" %}
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese su contraseña antigua.
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Contraseña nueva</b></span>
+                                        {% render_field form.new_password1 class+="form-control form-control-lg" placeholder="Nueva contraseña" %}
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese su contraseña nueva.
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Contraseña nueva(confirmacion)</b></span>
+                                        {% render_field form.new_password2 class+="form-control form-control-lg" placeholder="Confirmar nueva contraseña" %}
+                                        <div class="invalid-feedback">
+                                            Por favor ingrese su contraseña nueva(confirmacion).
+                                        </div>
+                                    </div>
+                                    
+
+                                    <div class="pt-1 mb-4  d-flex justify-content-end">
+                                        <button class="btn btn-success btn-lg btn-block me-2" type="submit"><i class="far fa-save "></i>  Guardar</button>
+                                        <a href="{%url 'moduloUsuarios:users'%}">
+                                        <button  class="btn btn-danger btn-lg btn-block" type="button"><i class="fas fa-times"></i>  Cancelar</button>
+                                        </a>
+                                    </div>
+                                    
+
+                                    
+                                    
+                                </form>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

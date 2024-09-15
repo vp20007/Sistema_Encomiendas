@@ -1,0 +1,41 @@
+{% extends "base4.html" %}
+
+{% block title %}Eliminar Repartidor{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <div class="row bg-secondary py-1">
+        <h3 class="mb-1 text-white">Eliminar Repartidor</h3>
+    </div>
+    <div class="row align-items-center border mt-1" style="background-color: #F5F0EF;">
+        <div class="col-md-6">
+            <p>¿Estás seguro que deseas eliminar al repartidor {{ repartidor.nombres }} {{ repartidor.apellidos }}?</p>
+        </div>
+    </div>
+</div>
+<section class="vh-100">
+    <div class="container py-3">
+        <div class="row d-flex justify-content-center h-100">
+            <div class="col col-12">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col d-flex align-items-center" style="background-color: #F5F0EF; border-radius: 1rem;">
+                            <div class="card-body p-4 p-lg-5 text-black d-flex justify-content-center align-items-center">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    <button class="btn btn-danger btn-lg me-2" type="submit">
+                                        <i class="far fa-trash-alt"></i> Confirmar Eliminación
+                                    </button>
+                                    <a href="{% url 'moduloUsuarios:crud_repartidor' %}" class="btn btn-secondary btn-lg">
+                                        <i class="fas fa-times"></i> Cancelar
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

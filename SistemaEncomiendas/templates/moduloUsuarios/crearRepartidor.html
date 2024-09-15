@@ -1,0 +1,83 @@
+{% extends "base4.html" %}
+{% block titulo %}Crear Repartidor{% endblock titulo %}
+
+{% block body %}
+<div class="container mt-3">
+    <div class="row bg-secondary py-1">
+        <h3 class="mb-1 text-white">Repartidores</h3>
+    </div>
+    <div class="row align-items-center border mt-1" style="background-color: #F5F0EF;">
+        <div class="col-md-6">
+            <div class="d-flex">
+                <p class="mb-1 font-weight-bold">
+                    <b><i class="fas fa-check-circle"></i> Registro</b>
+                </p>
+            </div>
+        </div>
+        <div class="col-md-6 mb-1">
+            <div class="d-flex justify-content-end">
+                <a href="{% url 'moduloUsuarios:crud_repartidor' %}">
+                    <button type="button" class="btn btn-warning mt-1">
+                        <i class="fas fa-arrow-left"></i> Regresar
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="vh-100">
+    <div class="container py-3">
+        <div class="row d-flex justify-content-center h-100">
+            <div class="col col-12">
+                <div class="card" style="border-radius: 1rem;">
+                    <div class="row g-0">
+                        <div class="col d-flex align-items-center" style="background-color: #F5F0EF; border-radius: 1rem;">
+                            <div class="card-body p-4 p-lg-5 text-black d-flex justify-content-center align-items-center">
+                                <form class="w-75" method="post">
+                                    {% csrf_token %}
+                                    <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;"><b>Formulario de registro para Repartidores</b></h5>
+                                    <hr>
+                                    {% if form.errors %}
+                                        {% for field in form  %}
+                                            {% if field.errors %}
+                                                {% for error in field.errors  %}
+                                                <li class="text-danger "><b>{{error|escape}}</b></li>
+                                                {% endfor %}
+                                            
+                                            {% endif %}
+                                        {% endfor %} 
+                                        {% endif %}
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Nombres: </b></span>
+                                        {{ form.nombres }}
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Apellidos: </b></span>
+                                        {{ form.apellidos }}
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>DUI: </b></span>
+                                        {{ form.DUI_persona }}
+                                    </div>
+                                    <div class="input-group input-group mb-3">
+                                        <span class="input-group-text" id="inputGroup-sizing-sm"><b>Teléfono: </b></span>
+                                        {{ form.telefono_repartidor }}
+                                    </div>
+                                    <div class="pt-1 mb-4 d-flex justify-content-end">
+                                        <button class="btn btn-success btn-lg btn-block me-2" type="submit">
+                                            <i class="far fa-save"></i> Guardar
+                                        </button>
+                                        <a href="{% url 'moduloUsuarios:crud_repartidor' %}" class="btn btn-danger btn-lg btn-block">
+                                            <i class="fas fa-times"></i> Cancelar
+                                        </a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
