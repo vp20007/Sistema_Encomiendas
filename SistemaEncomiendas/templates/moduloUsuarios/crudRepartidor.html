@@ -54,7 +54,12 @@
                         <i class="fa fa-id-card" aria-hidden="true"></i>
                         <span class="tooltip-text position-absolute top-0 start-50 translate-middle badge bg-dark text-white">Ver</span>
                     </a>
-                    <button type="button" class="icon-link text-danger mx-auto mx-2 d-flex flex-column position-relative" style="font-size: 20px; padding: 0; border: none; background: none;" data-bs-toggle="modal" data-bs-target="#eliminarModal" data-repartidor-id="{{ repartidor.id_repartidor }}" data-repartidor-nombre="{{ repartidor.nombres }}">
+                    <button type="button" class="icon-link text-danger mx-auto mx-2 d-flex flex-column position-relative" 
+                        style="font-size: 20px; padding: 0; border: none; background: none;" 
+                        data-bs-toggle="modal" data-bs-target="#eliminarModal" 
+                        data-item-id="{{ repartidor.id_repartidor }}" 
+                        data-item-name="{{ repartidor.nombres }} {{repartidor.apellidos}} " 
+                        data-item-type="usuarios/eliminar_repartidor">
                         <i class="fas fa-trash-alt"></i>
                         <span class="tooltip-text position-absolute top-0 start-50 translate-middle badge bg-dark text-white">Eliminar</span>
                     </button>
@@ -64,7 +69,7 @@
         </tbody>
     </table>
 </div>
-
+<!-- MODAL DE ELIMINACION-->
 <div class="modal fade" id="eliminarModal" tabindex="-1" aria-labelledby="eliminarModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -73,7 +78,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>¿Estás seguro de que deseas eliminar al repartidor <b><span id="repartidorNombre">{{ repartidor.apellidos }}</span></b>?</p>
+                <p>¿Estás seguro de que deseas eliminar al repartidor <b><span id="itemNameSpan"></span></b>?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

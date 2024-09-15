@@ -39,16 +39,18 @@ $('[data-bs-toggle="tooltip"]').tooltip();
 document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('eliminarModal');
     const form = document.getElementById('eliminarForm');
-    const repartidorNombreSpan = document.getElementById('repartidorNombre');
+    const itemNameSpan = document.getElementById('itemNameSpan');
 
     modal.addEventListener('show.bs.modal', function(event) {
         const button = event.relatedTarget;
-        const repartidorId = button.getAttribute('data-repartidor-id');
-        const repartidorNombre = button.getAttribute('data-repartidor-nombre');
+        const itemId = button.getAttribute('data-item-id');
+        const itemName = button.getAttribute('data-item-name');
+        const itemType = button.getAttribute('data-item-type');
+        console.log("Item ID:", itemId);
 
-        // Actualizar el action del formulario con el ID del repartidor
-        form.setAttribute('action', `/usuarios/eliminar_repartidor/${repartidorId}/`);
-        repartidorNombreSpan.textContent = repartidorNombre;
+        // Actualizar el action del formulario con el tipo y ID del ítem
+        form.setAttribute('action', `/${itemType}/${itemId}/`);
+        itemNameSpan.textContent = itemName;
     });
 
     form.addEventListener('submit', function(event) {
@@ -68,11 +70,12 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             // Manejar la respuesta
             console.log(data);  // Puedes imprimir la respuesta para verificar
-            location.reload();  // Recargar la página para actualizar la lista de repartidores
+            location.reload();  // Recargar la página para actualizar la lista
         })
         .catch(error => console.error('Error:', error));
     });
 });
+
 
 //permite poner el - automaticamente en las entradas de dui
 document.addEventListener('DOMContentLoaded', function() {
